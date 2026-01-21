@@ -15,23 +15,25 @@ Backend API for a workout tracking application used by personal trainers. The AP
    ```bash
    git clone <YOUR_GITHUB_REPO_URL>
    cd workout-api-summative
-Install dependencies:
+## Install dependencies:
 pipenv install
 pipenv shell
-Database Setup
+## Database Setup
 Run migrations:
 export FLASK_APP=server/app.py
 flask db upgrade head
+
 Seed the database (resets tables and inserts sample data):
 cd server
 python seed.py
 cd ..
-Run the Server
+## Run the Server
 cd server
 python app.py
+
 Server runs on:
 http://127.0.0.1:5555
-API Endpoints
+## API Endpoints
 Workouts
 GET /workouts
 List all workouts
@@ -48,7 +50,7 @@ Body example:
 }
 DELETE /workouts/<id>
 Delete a workout (also deletes associated join records via cascade)
-Exercises
+## Exercises
 GET /exercises
 List all exercises
 GET /exercises/<id>
@@ -63,7 +65,7 @@ Body example:
 }
 DELETE /exercises/<id>
 Delete an exercise (also deletes associated join records via cascade)
-Add Exercise to Workout (Join Table)
+## Add Exercise to Workout (Join Table)
 POST /workouts/<workout_id>/exercises/<exercise_id>/workout_exercises
 Add an exercise to a workout with either:
 sets + reps, OR
@@ -72,7 +74,7 @@ Example (sets/reps):
 { "sets": 3, "reps": 10 }
 Example (duration):
 { "duration_seconds": 90 }
-Validations
+## Validations
 This API includes multiple layers of validation:
 Database constraints (e.g., required fields, unique exercise name, positive numeric constraints)
 Model validations using SQLAlchemy @validates
